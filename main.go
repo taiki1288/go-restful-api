@@ -43,6 +43,7 @@ func main() {
 	// GET関数を使用してGET HTTPメソッドと/albumsパスをハンドラ関数に関連付ける。getAlbums関数を渡す。
 	router.GET("/albums/:id", getAlbumByID)
 	// /albums/:idのパスとgetAlbumByID関数を関連付ける。getAlbumByID関数を返す。
+	router.GET("/fighters", getFighters)
 	router.POST("/albums", postAlbums)
 	// /albumsパスのPOSTメソッドとpostAlbums関数を関連付ける。
 	router.Run("localhost:8080")
