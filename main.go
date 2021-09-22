@@ -87,3 +87,12 @@ func getFighters(c *gin.Context) {
 	c.IndentedJSON(http.StatusOK, fighters)
 }
 
+func postFighters(c *gin.Context) {
+	var newFighter fighter
+	if err := c.BindJSON(&newFighter); err != nil {
+		return 
+	}
+	fighters = append(fighters, newFighter)
+	c.IndentedJSON(http.StatusCreated, newFighter)
+}
+
