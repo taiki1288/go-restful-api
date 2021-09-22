@@ -31,6 +31,21 @@ func postAlbums(c *gin.Context) {
 	c.IndentedJSON(http.StatusCreated, newAlbum)
 }
 
+// クライアントから送られてきたidパラメータと一致するIDを持つアルバムを探す関数。
+func getAlbumByID(c *gin.Context) {
+	id := c.Param("id")
+	for _, a := range albums {
+		// スライスのalbumsをループして、IDフィールドの値がidパラメータの値と一致するものを探す。
+		if a.ID == id {
+			c.IndentedJSON(http.StatusOK, a)
+			// アルバム構造体をJSONにシリアライズし、200OKのHTTPコードでレスポンスとして返します。
+			return 
+		}
+	}
+	c.IndentedJSON(http.StatusNotFound, gin.H{"message": "album not found"})
+	// アルバムが見つからない場合にHTTP404エラーを返している。
+}
+
 var albums = []album{
 	{ID: "1", Title: "ChuchuTrain", Artist: "EXILE", Price: 5000},
 	{ID: "2", Title: "Jeru", Artist: "Gerry Mulligan", Price: 4000},
