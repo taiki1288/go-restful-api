@@ -26,6 +26,7 @@ var albums = []album{
 	{ID: "3", Title: "Sarah Vaughan and Clifford Brown", Artist: "Sarah Vaughan", Price: 3000},
 }
 
+// 個人的な好きな総合格闘家一覧
 var fighters = []fighter {
 	{ ID: "1", Name: "堀口恭司", Age: 30, Backbone: "Traditional Karate" },
 	{ ID: "2", Name: "朝倉未来", Age: 29, Backbone: "Fighting"},
@@ -79,5 +80,9 @@ func getAlbumByID(c *gin.Context) {
 	}
 	c.IndentedJSON(http.StatusNotFound, gin.H{"message": "album not found"})
 	// アルバムが見つからない場合にHTTP404エラーを返している。
+}
+
+func getFighters(c *gin.Context) {
+	c.IndentedJSON(http.StatusOK, fighters)
 }
 
