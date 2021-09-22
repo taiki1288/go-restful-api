@@ -13,6 +13,13 @@ type album struct {
 	Price  float64 `json:"price"`
 }
 
+type fighter struct {
+	ID       string `json: "id"`
+	Name     string `json: "name"`
+	Age      int    `json: "age"`
+	Backbone string `json: "backbone"`
+}
+
 var albums = []album{
 	{ID: "1", Title: "ChuchuTrain", Artist: "EXILE", Price: 5000},
 	{ID: "2", Title: "Jeru", Artist: "Gerry Mulligan", Price: 4000},
