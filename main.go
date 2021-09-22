@@ -26,6 +26,15 @@ var albums = []album{
 	{ID: "3", Title: "Sarah Vaughan and Clifford Brown", Artist: "Sarah Vaughan", Price: 3000},
 }
 
+var fighters = []fighter {
+	{ ID: "1", Name: "堀口恭司", Age: 30, Backbone: "Traditional Karate" },
+	{ ID: "2", Name: "朝倉未来", Age: 29, Backbone: "Fighting"},
+	{ ID: "3", Name: "朝倉海", Age: 28, Backbone: "Karate" },
+	{ ID: "4", Name: "井上直樹", Age: 24, Backbone: "Karate" },
+	{ ID: "5", Name: "金太郎", Age: 28, Backbone: "Kickboxing" },
+	{ ID: "6", Name: "斉藤裕", Age: 33, Backbone: "Brazilian Jiu-Jitsu" },
+}
+
 func main() {
 	router := gin.Default()
 	// Defaultを使用してGinルーターを初期化
@@ -71,3 +80,4 @@ func getAlbumByID(c *gin.Context) {
 	c.IndentedJSON(http.StatusNotFound, gin.H{"message": "album not found"})
 	// アルバムが見つからない場合にHTTP404エラーを返している。
 }
+
