@@ -14,10 +14,10 @@ type album struct {
 }
 
 type fighter struct {
-	ID       string `json: "id"`
-	Name     string `json: "name"`
-	Age      int    `json: "age"`
-	Backbone string `json: "backbone"`
+	ID       string `json:"id"`
+	Name     string `json:"name"`
+	Age      int    `json:"age"`
+	Backbone string `json:"backbone"`
 }
 
 var albums = []album{
