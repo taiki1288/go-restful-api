@@ -13,6 +13,25 @@ type album struct {
 	Price  float64 `json:"price"`
 }
 
+var albums = []album{
+	{ID: "1", Title: "ChuchuTrain", Artist: "EXILE", Price: 5000},
+	{ID: "2", Title: "Jeru", Artist: "Gerry Mulligan", Price: 4000},
+	{ID: "3", Title: "Sarah Vaughan and Clifford Brown", Artist: "Sarah Vaughan", Price: 3000},
+}
+
+func main() {
+	router := gin.Default()
+	// Defaultを使用してGinルーターを初期化
+	router.GET("/albums", getAlbums)
+	// GET関数を使用してGET HTTPメソッドと/albumsパスをハンドラ関数に関連付ける。getAlbums関数を渡す。
+	router.GET("/albums/:id", getAlbumByID)
+	// /albums/:idのパスとgetAlbumByID関数を関連付ける。getAlbumByID関数を返す。
+	router.POST("/albums", postAlbums)
+	// /albumsパスのPOSTメソッドとpostAlbums関数を関連付ける。
+	router.Run("localhost:8080")
+	// Run関数を使って、ルータをhttp.Serverに接続し、サーバを起動する。
+}
+
 func getAlbums(c *gin.Context) {
 	// 引数はクライアントに送信したいHTTPステータスコード。200OKを示すnet/httpパッケージの定数StatusOKを渡している。
 	c.IndentedJSON(http.StatusOK, albums)
@@ -44,23 +63,4 @@ func getAlbumByID(c *gin.Context) {
 	}
 	c.IndentedJSON(http.StatusNotFound, gin.H{"message": "album not found"})
 	// アルバムが見つからない場合にHTTP404エラーを返している。
-}
-
-var albums = []album{
-	{ID: "1", Title: "ChuchuTrain", Artist: "EXILE", Price: 5000},
-	{ID: "2", Title: "Jeru", Artist: "Gerry Mulligan", Price: 4000},
-	{ID: "3", Title: "Sarah Vaughan and Clifford Brown", Artist: "Sarah Vaughan", Price: 3000},
-}
-
-func main() {
-	router := gin.Default()
-	// Defaultを使用してGinルーターを初期化
-	router.GET("/albums", getAlbums)
-	// GET関数を使用してGET HTTPメソッドと/albumsパスをハンドラ関数に関連付ける。getAlbums関数を渡す。
-	router.GET("/albums/:id", getAlbumByID)
-	// /albums/:idのパスとgetAlbumByID関数を関連付ける。getAlbumByID関数を返す。
-	router.POST("/albums", postAlbums)
-	// /albumsパスのPOSTメソッドとpostAlbums関数を関連付ける。
-	router.Run("localhost:8080")
-	// Run関数を使って、ルータをhttp.Serverに接続し、サーバを起動する。
 }
