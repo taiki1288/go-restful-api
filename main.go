@@ -45,6 +45,7 @@ func main() {
 	// /albums/:idのパスとgetAlbumByID関数を関連付ける。getAlbumByID関数を返す。
 	router.GET("/fighters", getFighters)
 	router.POST("/albums", postAlbums)
+	router.POST("/fighters", postFighters)
 	// /albumsパスのPOSTメソッドとpostAlbums関数を関連付ける。
 	router.Run("localhost:8080")
 	// Run関数を使って、ルータをhttp.Serverに接続し、サーバを起動する。
