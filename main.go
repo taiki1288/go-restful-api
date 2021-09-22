@@ -19,6 +19,18 @@ func getAlbums(c *gin.Context) {
 	// c.IndentedJSONで構造体をJSONにシリアライズし、レスポンスに追加する。
 }
 
+func postAlbums(c *gin.Context) {
+	var newAlbum album
+	if err := c.BindJSON(&newAlbum); err != nil {
+		// Context.BindJSON を使用して、リクエストボディをnewAlbumにバインドする。
+		return 
+	}
+
+	albums = append(albums, newAlbum)
+	// 第一引数ではスライス、第二引数では追加する値をとっている。
+	c.IndentedJSON(http.StatusCreated, newAlbum)
+}
+
 var albums = []album{
 	{ID: "1", Title: "ChuchuTrain", Artist: "EXILE", Price: 5000},
 	{ID: "2", Title: "Jeru", Artist: "Gerry Mulligan", Price: 4000},
