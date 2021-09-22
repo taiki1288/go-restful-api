@@ -42,6 +42,8 @@ func main() {
 	// Defaultを使用してGinルーターを初期化
 	router.GET("/albums", getAlbums)
 	// GET関数を使用してGET HTTPメソッドと/albumsパスをハンドラ関数に関連付ける。getAlbums関数を渡す。
+	router.POST("/albums", postAlbums)
+	// /albumsパスのPOSTメソッドとpostAlbums関数を関連付ける。
 	router.Run("localhost:8080")
 	// Run関数を使って、ルータをhttp.Serverに接続し、サーバを起動する。
 }
